@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mimo-docagent"
+version = "0.1.0"
+description = "Long-context PDF analyst powered by Xiaomi MiMo vision + reasoning"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "MiMo-DocAgent contributors" }]
+keywords = ["llm", "pdf", "rag", "mimo", "vision-language", "document-ai"]
+dependencies = [
+    "openai>=1.30",
+    "rich>=13.7",
+    "tenacity>=8.2",
+    "python-dotenv>=1.0",
+    "pypdfium2>=4.30",
+    "Pillow>=10.3",
+    "pydantic>=2.6",
+]
+
+[project.scripts]
+docagent = "docagent.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

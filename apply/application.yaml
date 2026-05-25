@@ -1,0 +1,44 @@
+# Xiaomi MiMo 100T application data — MiMo-DocAgent project.
+# All submitted content is in ENGLISH.
+
+email: xrapz1767@gmail.com
+
+tools:
+  - Claude Code
+  - Cursor
+  - Cline
+
+models:
+  - Claude 系列
+  - GPT 系列
+  - MiMo 系列
+
+project_description: |
+  MiMo-DocAgent is an open-source long-context document analyst powered by
+  Xiaomi MiMo. Repository: github.com/FlipZ3ro/mimo-docagent.
+
+  Pain point: standard "chat with your PDF" tools rely on embedding-based
+  RAG, which silently fails on documents that require cross-page reasoning
+  — financial 10-K filings, legal contracts, scientific papers, depositions.
+  The right answer often spans sections that no top-k retriever surfaces
+  together. MiMo-DocAgent fixes this by skipping retrieval and using
+  vision + long chain-of-thought directly.
+
+  Core logic flow — long chain-of-thought + multi-agent collaboration:
+  (1) PDF parser renders each page to image and extracts the text layer
+  via pypdfium2.
+  (2) Page extractor: mimo-v2-omni receives each page image and returns
+  structured facts (section header, summary, key points, tables, figures)
+  as JSON. Parallel across pages.
+  (3) Analyst: mimo-v2.5-pro receives the assembled page index plus the
+  user's question and runs long-CoT reasoning. Every claim cites a page
+  number.
+  (4) CLI offers single-question and interactive chat modes.
+
+  Token plan: ~250K tokens per 50-page doc analysis, ~1M per 200-page doc.
+  Target: ship analyst reports for 100 public 10-K filings + benchmark on
+  the LongBench-DocQA subset. Estimated total: ~500M tokens over 8 weeks.
+
+github_or_demo_url: https://github.com/FlipZ3ro/mimo-docagent
+
+upload_files: []
